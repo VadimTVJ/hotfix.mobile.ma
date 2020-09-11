@@ -37,7 +37,7 @@ const Fundraising = ({id, go, type}) => {
 
             reader.onload = (e) => {
                 setImageStyle(e.target.result);
-            }
+            };
 
             reader.readAsDataURL(image.files[0]);
         }
@@ -63,7 +63,7 @@ const Fundraising = ({id, go, type}) => {
                 document.getElementById("image-input").click();
             }}>
                 <div className={"Cover" + (imageStyle ? " CoverImgContains" : "")}>
-                    <img className="CoverImg" src={imageStyle}/>
+                    <img className="CoverImg" src={imageStyle ? imageStyle : ""}/>
                     <div className={"CoverText" + (imageStyle ? " CoverImgContainsText" : "")}>
                         <Icon28PictureOutline/>Загрузить обложку
                     </div>

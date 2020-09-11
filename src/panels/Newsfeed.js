@@ -3,7 +3,7 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 
 import {Avatar, Button, PanelHeaderButton, Progress, Separator, TabsItem, Tappable} from "@vkontakte/vkui";
-import {Icon28CameraOutline, Icon28Notifications} from "@vkontakte/icons";
+import {Icon16Dropdown, Icon28CameraOutline, Icon28Notifications} from "@vkontakte/icons";
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 import Tabs from "@vkontakte/vkui/dist/components/Tabs/Tabs";
 
@@ -23,7 +23,12 @@ const Newsfeed = ({id, go}) => {
                 right={<PanelHeaderButton onClick={() => {
                 }}><Icon28Notifications/></PanelHeaderButton>}>
                 <Tabs>
-                    <TabsItem selected>Новости</TabsItem>
+                    <TabsItem
+                        selected
+                        after={<Icon16Dropdown fill="var(--accent)"/>}
+                    >
+                        Новости
+                    </TabsItem>
                     <TabsItem>Интересное</TabsItem>
                 </Tabs>
             </PanelHeader>
@@ -42,7 +47,7 @@ const Newsfeed = ({id, go}) => {
                     go("fundraising_view")
                 }}>
                     <div className="Attachment">
-                        <img className="Attachment_img" src={data.image ? data.image : ""}/>
+                        {data.image !== 'none' && <img className="Attachment_img" src={data.image} />}
                         <div className="Attachment_Infobar">
                             <div className="Attachment_titles">
                                 <div className="Attachment_title">{data.name}</div>
