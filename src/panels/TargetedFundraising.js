@@ -12,7 +12,7 @@ import {
     Select,
     Textarea
 } from "@vkontakte/vkui";
-import {Icon28PictureOutline} from "@vkontakte/icons";
+import {Icon28PictureOutline, Icon24DismissOverlay} from "@vkontakte/icons";
 import Div from "@vkontakte/vkui/dist/components/Div/Div";
 
 const Fundraising = ({id, go, type}) => {
@@ -64,9 +64,15 @@ const Fundraising = ({id, go, type}) => {
             }}>
                 <div className={"Cover" + (imageStyle ? " CoverImgContains" : "")}>
                     <img className="CoverImg" src={imageStyle ? imageStyle : ""}/>
-                    <div className={"CoverText" + (imageStyle ? " CoverImgContainsText" : "")}>
-                        <Icon28PictureOutline/>Загрузить обложку
-                    </div>
+                    {!imageStyle ?
+                        <>
+                            <div className={"CoverText" + (imageStyle ? " CoverImgContainsText" : "")}>
+                                <Icon28PictureOutline/>Загрузить обложку
+                            </div>
+                        </>
+                        :
+                        <Icon24DismissOverlay className="dismiss" />
+                    }
                 </div>
             </Div>
             <FormLayout>
